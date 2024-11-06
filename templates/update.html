@@ -1,0 +1,15 @@
+<!-- update_account.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Account</title>
+</head>
+<body>
+    <h2>Update Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

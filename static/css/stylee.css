@@ -1,0 +1,9 @@
+.carousel-item img {
+    height: 80vh;
+    object-fit: cover;
+
+}
+
+.ac {
+    text-decoration: none;
+}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}
+COLLECTION PAGE
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+    
+    <section class="bg-light py-4 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mb-3">Cart Items</h4>
+                    <hr style="border-color:#b8bfc2;">
+                </div>
+            </div>
+            
+            <table class="table table-bordered">
+                <tr>
+                    <th>Image<th>
+                    <th>Product name<th>
+                    <th>Quantity<th>
+                    <th>Ammount</th>
+                    <th>Remove<th>
+
+                </tr>
+                {% for item in cart%}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>{{item.product.name}}</td>
+                    <td></td>
+                    <td>{{item.product_qty}}</td>
+                    <td></td>
+                    <td>{{item.total}}</td>
+                    
+                    <td><a href="{% url 'removecart' item.id %}" onclick="return confirm('are you sure to delete')" class="btn btn-danger">Remove</a></td>
+                </tr>
+                
+
+                {% endfor %}
+                <h1>TOTAL AMMOUNT:<span id="s1"></span></h1>
+            </table>
+        </div>
+    </section>
+    <a href="{% url 'checkout'%}">
+        <button >Pay Now </button>
+    </a>
+    
+</div>
+<script>
+    let total=0
+    {% for item in cart%}
+        total=total+{{item.total}}
+    {%endfor %}
+    let s1=document.getElementById('s1')
+    s1.innerText=total;
+</script>
+{% endblock %}

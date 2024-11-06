@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+<div class="container my-5">
+    
+    <section class="bg-light py-4 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mb-3">{{title}}</h4>
+                    <hr style="border-color:#b8bfc2;">
+                </div>
+            </div>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card my-3" style="width: 18rem;">
+                                {% if product.product_image.url is not null %}
+                                <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                                {% else %}
+                                <img src="" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                                {%endif%}
+                                <a href="{% url 'product' product.name %}" class="ac">
+                            
+                                    <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text"><small class="text-muted">{{ product.created_at }}</small></p>
+                                    <p class="card-text">
+                                        <span class="float-start original_price"><s>Rs.{{product.original_price}}</s></span>
+                                        <span class="float-end selling_price">Rs.{{product.selling_price}}</span>
+                                    </p>
+                                    </div>
+                                </a>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
